@@ -65,8 +65,8 @@ def signUp():
             # Update the database with the new user.
             db.session.commit()
 
-            # Log in the user and remember the user after the session expires.
-            login_user(user, remember=True)
+            # Log in the user and do not remember the user after the session expires.
+            login_user(user, remember=False)
             flash("New account created!", category="success")
             # Redirect the user to the home page.
             return redirect(url_for("views.home"))

@@ -1,12 +1,14 @@
 {% extends "base.html" %}
-
+{% block head %}
+    <script src="../static/index.js"></script>
+{% endblock %}
 {% block content %}
 <h1 align="center">Notes</h1>
 <ul class="list-group list-group-flush" id="notes">
     {% for note in user.notes %}
         <li class="list-group-item">
             {{note.data}}
-            <!-- Button for deleting notes, will call the JS function deleteNote() -->
+            <!-- Button for deleting notes, will call the JS function deleteNote from /static/index.js -->
             <button type="button" class="close" onClick="deleteNote({{ note.id }})">
                 <span area-hidden="true">&times;</span>
             </button>
