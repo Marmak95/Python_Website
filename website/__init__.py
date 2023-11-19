@@ -3,6 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
 
+"""
+This is the back-end that initializes the application with the database.
+"""
+
 db = SQLAlchemy()
 DB_NAME = "database.db"
 

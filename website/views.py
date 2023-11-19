@@ -4,6 +4,10 @@ from .models import Note
 from . import db
 import json
 
+"""
+This is where the front-end views is handled when the user interacts on the website.
+"""
+
 views = Blueprint("views", __name__)
 
 @views.route("/", methods=["GET", "POST"])

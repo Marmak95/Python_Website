@@ -3,7 +3,7 @@ from flask_login import UserMixin
 from sqlalchemy.sql import func
 
 """
-This is where the data base schema is created/modified.
+This is where the database schema is created/modified.
 """
 
 class Note(db.Model):
