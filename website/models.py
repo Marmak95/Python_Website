@@ -12,9 +12,24 @@ class Note(db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     userId = db.Column(db.Integer, db.ForeignKey("user.id"))
 
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), unique=True)
+    advertisements = db.relationship('Advertisement', back_populates='category')
+
+class Advertisement(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    userId = db.Column(db.Integer, db.ForeignKey("user.id"))
+    description = db.Column(db.String(10000))
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    image = db.Column(db.String(255))
+    categoryId = db.Column(db.Integer, db.ForeignKey('category.id'))
+    category = db.relationship('Category', back_populates='advertisements')
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     firstName = db.Column(db.String(150))
     notes = db.relationship("Note")
+    advertisements = db.relationship("Advertisement")

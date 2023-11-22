@@ -1,7 +1,9 @@
 # Python website
 The website is built using the back-end framework called [Flask](https://flask.palletsprojects.com/en/3.0.x/) and the front-end framework [Bootstrap 5](https://getbootstrap.com/docs/5.3/getting-started/introduction/).
 The database will be stored in the "instance" folder once main.py starts to run.
-The website will continue to develop and its not fully decided yet what the users should be able to do when logged in.
+The website will continue to develop and it will be similar to the swedish website called "Blocket",
+where users can create advertisements for items that they want to sell or if they want to buy
+something from another user.
 
 ![Login_page](https://github.com/Marmak95/Python_Website/assets/79858654/d88338f9-7999-4781-8ba5-ef48313005d1)
 
