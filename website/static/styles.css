@@ -8,8 +8,14 @@ body {
 
 .top-text {
     padding-top: 30px;
+    padding-bottom: 10px;
 }
 
+.form-text-info {
+    padding-bottom: 8px;
+}
+
+/* Footer improvement with a background image */
 .footer {
     position: relative; /* Needed for stacking context */
     color: #fff;
