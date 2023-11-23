@@ -6,6 +6,10 @@ body {
     margin: 0;
 }
 
+.top-text {
+    padding-top: 30px;
+}
+
 .footer {
     position: relative; /* Needed for stacking context */
     color: #fff;

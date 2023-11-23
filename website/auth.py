@@ -43,6 +43,7 @@ def signUp():
     if(request.method == "POST"):
         email = request.form.get("email")
         firstName = request.form.get("firstName")
+        lastName = request.form.get("lastName")
         password1 = request.form.get("password1")
         password2 = request.form.get("password2")
 
@@ -53,6 +54,8 @@ def signUp():
             flash("Email must be greater than 3 characters.", category="error")
         elif(len(firstName) < 2):
             flash("First name must be greater than 1 character.", category="error")
+        elif(len(lastName) < 2):
+            flash("Last name must be greater than 1 character.", category="error")
         elif(password1 != password2):
             flash("The passwords do not match.", category="error")
         elif(len(password1) < 8):
@@ -60,13 +63,13 @@ def signUp():
         else:
             # Add new user to the database if everything is filled in correctly.
             # Hash the password for security reasons (pbkdf2:sha256 is the method instead of sha256 because of Werkzeug version 2.0.0 and later).
-            newUser = User(email=email, firstName=firstName, password=generate_password_hash(password1, method="pbkdf2:sha256"))
+            newUser = User(email=email, firstName=firstName, lastName=lastName, password=generate_password_hash(password1, method="pbkdf2:sha256"))
             db.session.add(newUser)
             # Update the database with the new user.
             db.session.commit()
 
             # Log in the user and do not remember the user after the session expires.
-            login_user(user, remember=False)
+            login_user(newUser, remember=False)
             flash("New account created!", category="success")
             # Redirect the user to the home page.
             return redirect(url_for("views.home"))
