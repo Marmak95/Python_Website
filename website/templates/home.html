@@ -1,25 +1,117 @@
 {% extends "base.html" %}
-{% block head %}
-    <script src="../static/index.js"></script>
-{% endblock %}
 {% block content %}
-<h3 class="top-text" align="center">Notes</h3>
-<ul class="list-group list-group-flush" id="notes">
-    {% for note in user.notes %}
-        <li class="list-group-item">
-            {{note.data}}
-            <!-- Button for deleting notes, will call the JS function deleteNote from /static/index.js -->
-            <button type="button" class="close" onClick="deleteNote({{ note.id }})">
-                <span area-hidden="true">&times;</span>
-            </button>
-        </li>
-    {% endfor %}
-</ul>
-<form method="POST">
-    <textarea name="note" id="note" class="form-control"></textarea>
-    <br>
-    <div>
-        <button type="submit" class="btn btn-primary">Add note</button>
+<div class="container mt-4">
+    <div class="row mb-3" id="top-bar">
+        <div class="col">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAdvertisementModal">
+                Add Advertisement
+            </button>            
+        </div>
+        <div class="col">
+            <!-- Search bar -->
+            <input type="text" class="form-control" placeholder="Search...">
+        </div>
+        <div class="col">
+            <!-- Category selection dropdown -->
+            <select class="form-control">
+                <option value="">All Categories</option>
+                <!-- Add category options dynamically later -->
+            </select>
+        </div>
     </div>
-</form>
+
+    <div class="row">
+        <!-- Display grid of advertisements -->
+        <div class="col-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Advertisement Title</h5>
+                    <p class="card-text">Advertisement Description</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Advertisement Title</h5>
+                    <p class="card-text">Advertisement Description</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Advertisement Title</h5>
+                    <p class="card-text">Advertisement Description</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Advertisement Title</h5>
+                    <p class="card-text">Advertisement Description</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Advertisement Title</h5>
+                    <p class="card-text">Advertisement Description</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Advertisement Modal -->
+<div class="modal fade" id="addAdvertisementModal" tabindex="-1" role="dialog" aria-labelledby="addAdvertisementModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="addAdvertisementModalLabel">Add Advertisement</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Form to add an advertisement -->
+                <form>
+                    <div class="form-group">
+                        <label class="modal-title-text" for="advertisementTitle">Title</label>
+                        <input type="text" class="form-control" id="advertisementTitle" placeholder="Enter title">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="modal-description-text" for="advertisementDescription">Description</label>
+                        <textarea class="form-control" id="advertisementDescription" rows="3" placeholder="Enter description"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="modal-category-text" for="category">Category</label>
+                        <!-- Add categories dynamically later -->
+                        <select class="form-control" id="category">
+                            <option value="category1">Category 1</option>
+                            <option value="category2">Category 2</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="modal-image-text" for="advertisementImage">Image</label>
+                        <input type="file" class="form-control" id="advertisementImage" accept="image/*">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="advertisementSubmitButton">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -15,6 +15,34 @@ body {
     padding-bottom: 8px;
 }
 
+#top-bar {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    background-color: rgba(51, 51, 51, 0.452);
+    border-radius: 10px;
+}
+
+.card-body {
+    height: 300px;
+}
+
+/* Advertisement modal modifications */
+.modal-title-text, .modal-description-text, .modal-category-text, .modal-image-text {
+    margin-bottom: 12px;
+}
+
+#advertisementTitle, #advertisementDescription, #category, #advertisementImage {
+    margin-bottom: 20px;
+}
+
+#advertisementSubmitButton {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
 /* Footer improvement with a background image */
 .footer {
     position: relative; /* Needed for stacking context */
