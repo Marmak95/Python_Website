@@ -22,6 +22,8 @@ The functionality of the website is prioritized, so the front-end will be focuse
 
 ## Limitations
 1. The users can't add advertisements or see other user's advertisements yet, the functionality will be added.
+2. Search functionality is not working yet.
+3. Category functionality is not working yet.
 
 ## How to use
 1. Install the modules
