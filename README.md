@@ -15,20 +15,33 @@ The functionality of the website is prioritized, so the front-end will be focuse
 
 ![Home_page_2](https://github.com/Marmak95/Python_Website/assets/79858654/de1be1ef-716d-4710-8b03-0a29b74acc66)
 
-## Main features
+## Main features added
 1. Users can sign up to create an account.
 2. Users can login with their created account.
 3. Users can logout once they have logged in.
+4. Users can become an admin.
 
 ## Limitations
 1. The users can't add advertisements or see other user's advertisements yet, the functionality will be added.
-2. Search functionality is not working yet.
-3. Category functionality is not working yet.
+2. Search functionality is not added yet.
+3. Category functionality is not added yet.
+4. Admins can't do anything special yet.
 
 ## How to use
 1. Install the modules
-2. Run main.py
-3. Visit: http://127.0.0.1:5000
+2. Change the password in website/secretAppKey.cfg
+3. Run main.py to start the server
+4. Visit: http://127.0.0.1:5000
+
+### Set admin
+1. Sign up an account that will become an admin
+2. Cancel the server (ctrl + c in the terminal)
+3. Change the email for the user that should become an admin in setAdmin.py at the bottom row.
+4. Run setAdmin.py (from ../Python_Website)
+```
+python -m website.setAdmin
+```
+5. Start the server again and continue
 
 ### Modules installed
 

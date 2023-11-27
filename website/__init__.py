@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
@@ -13,7 +13,6 @@ DB_NAME = "database.db"
 def readSecretPassword():
     with open("website/secretAppKey.cfg", "r") as file:
         password = file.read().strip()
-        file.close()
         return password
 
 def createApp():
@@ -26,6 +25,10 @@ def createApp():
     # Store the database in the website folder
     app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
     db.init_app(app)
+
+    @app.route('/uploads/<path:filename>')
+    def serve_uploaded_file(filename):
+        return send_from_directory('uploads', filename)
 
     from .views import views
     from .auth import auth
@@ -53,4 +56,4 @@ def createDatabase(app):
     if(not path.exists("website/" + DB_NAME)):
         with app.app_context():
             db.create_all()
-        print("Database was created.")
+        print("Database works.")
