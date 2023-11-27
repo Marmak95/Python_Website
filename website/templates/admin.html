@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+{% if user.is_authenticated %}
+    {% if user.role == "admin" %}
+        <a class="nav-item nav-link" id="home" href="/">Home</a>
+    {% endif %}
+    <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="adminMenu container-lg">
+    <div class="d-flex align-items-start">
+        <!-- Button trigger modal -->
+        <button type="button" class="adminMenuButton btn btn-primary" data-bs-toggle="modal" data-bs-target="#category-modal">
+            Add category
+        </button>
+        <button type="button" class="adminMenuButton btn btn-danger">
+            Delete category
+        </button>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="category-modal" tabindex="-1" aria-labelledby="category-modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="category-modal">Add a category</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col-auto">
+                        <label for="category-name" class="visually-hidden">Category name</label>
+                        <input type="text" class="form-control" id="category-name" placeholder="Category name">
+                    </div>                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveCategoryButton">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}

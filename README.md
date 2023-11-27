@@ -11,21 +11,27 @@ The functionality of the website is prioritized, so the front-end will be focuse
 
 ![Sign_up_page](https://github.com/Marmak95/Python_Website/assets/79858654/aef6936a-dd0e-457c-be66-646efeca35ec)
 
-![Home_page](https://github.com/Marmak95/Python_Website/assets/79858654/e8ea7513-6cac-4998-9af3-26ecad60ab9a)
+![Home_page](https://github.com/Marmak95/Python_Website/assets/79858654/9b4b5435-9881-45ac-8ab9-22aced9964cf)
 
-![Home_page_2](https://github.com/Marmak95/Python_Website/assets/79858654/de1be1ef-716d-4710-8b03-0a29b74acc66)
+![Home_page_2](https://github.com/Marmak95/Python_Website/assets/79858654/34c294d9-88e8-4572-ac97-cc87041e1b60)
+
+![admin_page](https://github.com/Marmak95/Python_Website/assets/79858654/de17e11b-5ea7-46f7-89df-9e4b977308b1)
+
+![admin_page_add_category](https://github.com/Marmak95/Python_Website/assets/79858654/9ad1c1b1-5f14-4fbf-a6f7-a43a4dabe8d0)
 
 ## Main features added
 1. Users can sign up to create an account.
 2. Users can login with their created account.
 3. Users can logout once they have logged in.
 4. Users can become an admin.
+5. Users can't access the admin page.
+5. Admins can add categories.
 
 ## Limitations
 1. The users can't add advertisements or see other user's advertisements yet, the functionality will be added.
 2. Search functionality is not added yet.
 3. Category functionality is not added yet.
-4. Admins can't do anything special yet.
+4. Admins can only add categories.
 
 ## How to use
 1. Install the modules

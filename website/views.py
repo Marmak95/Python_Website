@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify
 from flask_login import login_required, current_user
+from sqlalchemy.exc import IntegrityError
 from . import db
-from .models import Advertisement
+from .models import Advertisement, Category
 import os
 
 """
@@ -22,7 +23,7 @@ def home():
     print(f"Last Name: {current_user.lastName}")
     print("-----------------------------------------")
 
-    if request.method == "POST":
+    if(request.method == "POST"):
         title = request.form.get("advertisementTitle")
         description = request.form.get("advertisementDescription")
         category = request.form.get("category")
@@ -44,3 +45,42 @@ def home():
                 return redirect(url_for("views.home"))
 
     return render_template("home.html", user=current_user)
+
+@views.route("/admin", methods=["GET", "POST"])
+@login_required
+def admin():
+    if(request.method == "POST"):
+        action = request.json.get("action")
+
+        if(action == "add_category"):
+            category_name = request.json.get("categoryName")
+
+            # Check if the category name already exists in the database.
+            existing_category = Category.query.filter_by(name=category_name).first()
+            if(existing_category):
+                flash("Category already exists!", category="error")
+                print(existing_category.name, "already exists!")
+                return jsonify({"success": False, "error": "Category already exists"})
+            
+            # Add category to the database.
+            category = Category(name=category_name)
+            db.session.add(category)
+
+            try:
+                db.session.commit()
+                flash("Category added successfully!", category="success")
+                print(category.name, "was added!")
+                return jsonify({"success": True})
+            except IntegrityError as e:
+                db.session.rollback()
+                print(category.name, "was not added!")
+                flash("Category could not be added!", category="error")
+                print("IntegrityError:", e)
+                return jsonify({"success": False, "error": "Category could not be added"})
+
+        else:
+            return jsonify({"success": False, "error": "Invalid action"})
+
+    return render_template("admin.html", user=current_user)
+
+

@@ -13,9 +13,9 @@ def setAdmin(email):
     # Extract the user by email.
     adminUser = User.query.filter_by(email=email).first()
 
-    if adminUser:
+    if(adminUser):
         # Update the user's role to 'admin' and update the database.
-        adminUser.role = 'admin'
+        adminUser.role = "admin"
         db.session.commit()
         print(f"User {email} is now an admin.")
     else:
