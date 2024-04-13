@@ -34,7 +34,11 @@ The functionality of the website is prioritized, so the front-end will be focuse
 4. Admins can only add categories.
 
 ## How to use
-1. Install the modules
+1. Install the modules:
+```
+pip install -r requirements.txt
+```
+
 2. Change the password in website/secretAppKey.cfg
 3. Run main.py to start the server
 4. Visit: http://127.0.0.1:5000
@@ -51,12 +55,6 @@ python -m website.setAdmin
 
 ### Modules installed
 
-```
-pip install flask
-```
-```
-pip install flask-login
-```
-```
-pip install flask-sqlalchemy
-```
+1. flask
+2. flask-login
+3. flask-sqlalchemy
